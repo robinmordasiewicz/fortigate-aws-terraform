@@ -1,0 +1,7 @@
+{
+  "image": "ghcr.io/robinmordasiewicz/devcontainer:latest",
+  "initializeCommand": "docker pull ghcr.io/robinmordasiewicz/devcontainer:latest",
+  "runArgs": [
+    "--hostname=devops-toolkit"
+  ]
+}

@@ -1,0 +1,52 @@
+---
+fail_fast: true
+repos:
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.5.4
+    hooks:
+      - id: remove-crlf
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=2000"]
+      - id: check-yaml
+        args: ["--unsafe"]
+      - id: check-json
+      - id: fix-byte-order-marker
+        exclude: .gitignore
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: end-of-file-fixer
+  #  - repo: https://github.com/terraform-docs/terraform-docs
+  #    rev: "v0.16.0"
+  #    hooks:
+  #      - id: terraform-docs-go
+  #        args: ["markdown", "table", "--output-file", "README.md", "./"]
+  #        fail_fast: false
+  #        pass_filenames: false
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.88.4
+    hooks:
+      - id: terraform_docs
+        #  args:
+        #  - --hook-config=--path-to-file=README.md
+        #  - --hook-config=--add-to-existing-file=true
+        #  - --hook-config=--create-file-if-not-exist=true
+        #  - --hook-config=--use-standard-markers=true
+      - id: terraform_fmt
+      #  args:
+      #    - --args=-recursive
+      - id: terraform_tflint
+      - id: terraform_validate
+      # - id: terrascan
+      #  args:
+      #    - --args=--non-recursive
+      #    - --args=--policy-type=azure
+      #- id: terraform_trivy
+      # - id: terraform_checkov
+      #   args:
+      #     - --args=--quiet
